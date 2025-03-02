@@ -134,7 +134,7 @@ export default function Home() {
       degree: "BE in Artificial Intelligence & Data Science",
       institution: "Dr. D. Y. Institute Of Technology, Pimpri",
       location: "Pune",
-      year: "2028",
+      year: "2026",
       score: "SGPA 9.11"
     }
   ];
