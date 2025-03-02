@@ -81,7 +81,7 @@ export default function Home() {
       "title": "AgriAI - Smart Farming Assistant",
       "description": "Developed an AI-powered system to assist farmers by providing crop recommendations, disease detection, and market price insights.",
       "technologies": ["Node.js", "Next.js", "Flask", "TensorFlow", "Computer Vision", "IoT"],
-      "link": "https://github.com/zuberkhan01st/AgriAI-SmartFarming",
+      "link": "https://github.com/zuberkhan01st/InnovateYou_2025",
       image:"/farmer.jpg"
     },
     {
