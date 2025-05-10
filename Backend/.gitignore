@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment variables
+.env
+
+# Database files
+*.sqlite
+*.db
+
+# Build directory (for front-end frameworks, e.g., React, Next.js)
+build/
+dist/
+
+# Dependencies from package managers
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# TypeScript compiled files
+*.tsbuildinfo
+
+# npm and yarn lock files (only if you're not using them)
+# package-lock.json
+# yarn.lock
+
+# Coverage output (from testing)
+coverage/
+
+# Miscellaneous
+*.bak
+*.tmp
