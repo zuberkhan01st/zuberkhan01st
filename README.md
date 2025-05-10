@@ -5,12 +5,12 @@
 # 🌟 Welcome to My GitHub Profile!
 
 <p align="center">
-  <img src="https://media.giphy.com/media/3o7bu8sRnYp0kAvaA0/giphy.gif" alt="Coding GIF" width="80" />
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExajgybThyeGlldGt0NGtoMm1oM2hnYWIzZGg4cDRvMXV5djFsazJsbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26tn33aiTi1jkl6H6/giphy.gif" alt="Tech GIF" width="150" />
 </p>
 
 **👋 Hi, I'm Zuber Khan** — a passionate developer crafting innovative solutions with code.
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Architects+Daughter&color=FF6F61&size=30&lines=Building+AI-Powered+Solutions;Full-Stack+Web+Developer;Data+Science+Explorer)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Architects+Daughter&color=FF6F61&size=30&lines=Building+AI-Powered+Solutions;Full-Stack+Web+Developer;AI/ML+DataScience+Explorer)](https://git.io/typing-svg)
 
 🚀 **Specializing in** AI, Web Development, and Data Science  
 💡 **Open-source contributor** | **Tech enthusiast** | **Problem solver**
