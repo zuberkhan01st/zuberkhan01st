@@ -5,7 +5,7 @@
 # 🌟 Welcome to My GitHub Profile!
 
 <p align="center">
-  <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" alt="Coding GIF" width="80" />
+  <img src="https://media.giphy.com/media/3o7bu8sRnYp0kAvaA0/giphy.gif" alt="Coding GIF" width="80" />
 </p>
 
 **👋 Hi, I'm Zuber Khan** — a passionate developer crafting innovative solutions with code.
