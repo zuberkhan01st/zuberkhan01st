@@ -37,7 +37,7 @@
   <img src="https://skillicons.dev/icons?i=flask" alt="Flask" height="40" />
   <img src="https://skillicons.dev/icons?i=html" alt="HTML5" height="40" />
   <img src="https://skillicons.dev/icons?i=css" alt="CSS3" height="40" />
-  <img src="https://skillicons.dev/icons?i=tailwind" alt="Tail=[wind CSS" height="40" />
+  <img src="https://skillicons.dev/icons?i=tailwind" alt="Tailwind CSS" height="40" />
 </p>
 
 ### 💾 Databases & DevOps
@@ -58,11 +58,11 @@
   <img src="https://skillicons.dev/icons?i=tensorflow" alt="TensorFlow" height="40" />
   <img src="https://skillicons.dev/icons?i=pytorch" alt="PyTorch" height="40" />
   <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI" height="40" />
-  <img src="[https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/symbol.png" alt="LangChain" height="40" />
-  <img src="https://www.pinecone.io/images/pinecone-logo.svg" alt="Pinecone" height="40" />
-  <img src="https://raw.githubusercontent.com/facebookresearch/faiss/main/.github/FAISS_logo.png" alt="FAISS" height="40" />
-  <img src="https://img.icons8.com/ios-filled/50/4B0082/database.png" alt="VectorDB" height="40" />
-  <img src="https://img.icons8.com/ios-filled/50/DB4C3A/database.png" alt="ChromaDB" height="40" />
+  <img src="https://img.shields.io/badge/LangChain-000000?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" height="40" />
+  <img src="https://img.shields.io/badge/Pinecone-00C4B4?style=flat-square&logo=pinecone&logoColor=white" alt="Pinecone" height="40" />
+  <img src="https://img.shields.io/badge/FAISS-0078D4?style=flat-square&logo=facebook&logoColor=white" alt="FAISS" height="40" />
+  <img src="https://img.shields.io/badge/VectorDB-4B0082?style=flat-square&logo=database&logoColor=white" alt="VectorDB" height="40" />
+  <img src="https://img.shields.io/badge/ChromaDB-DB4C3A?style=flat-square&logo=database&logoColor=white" alt="ChromaDB" height="40" />
 </p>
 
 ---
@@ -80,6 +80,10 @@
 
 <p align="center">
   <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zuberkhan01st&theme=dracula" alt="Profile Details" width="500" />
+</p>
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=zuberkhan01st" alt="Visitor Badge" />
 </p>
 
 ---
@@ -121,6 +125,7 @@
 - [GitHub Profile Summary Cards](https://github.com/vn7n24fzkq/github-profile-summary-cards) — Detailed profile insights
 - [GitHub Contribution Snake](https://github.com/Platane/snk) — Animated contribution graph
 - [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-svg) — Dynamic text animations
+- [Shields.io](https://shields.io) — Custom badges for tools
 - [Markdown Emoji Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet) — Fun emojis for your README
 
 ---
