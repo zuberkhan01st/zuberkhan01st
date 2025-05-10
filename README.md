@@ -59,10 +59,10 @@
   <img src="https://skillicons.dev/icons?i=pytorch" alt="PyTorch" height="40" />
   <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI" height="40" />
   <img src="https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/symbol.png" alt="LangChain" height="40" />
-  <img src="https://docs.pinecone.io/favicon.png" alt="Pinecone" height="40" />
+  <img src="https://www.pinecone.io/images/pinecone-logo.svg" alt="Pinecone" height="40" />
   <img src="https://raw.githubusercontent.com/facebookresearch/faiss/main/.github/FAISS_logo.png" alt="FAISS" height="40" />
-  <img src="https://img.icons8.com/?size=100&id=84809&format=png" alt="VectorDB" height="40" />
-  <img src="https://www.trychroma.com/favicon.png" alt="ChromaDB" height="40" />
+  <img src="https://img.icons8.com/ios-filled/50/4B0082/database.png" alt="VectorDB" height="40" />
+  <img src="https://img.icons8.com/ios-filled/50/DB4C3A/database.png" alt="ChromaDB" height="40" />
 </p>
 
 ---
