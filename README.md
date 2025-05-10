@@ -48,6 +48,11 @@
   <img src="https://skillicons.dev/icons?i=tensorflow" alt="TensorFlow" height="40" />
   <img src="https://skillicons.dev/icons?i=pytorch" alt="PyTorch" height="40" />
   <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI" height="40" />
+  <img src="https://img.shields.io/badge/LangChain-000000?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" height="40" />
+  <img src="https://img.shields.io/badge/Pinecone-00C4B4?style=flat-square&logo=pinecone&logoColor=white" alt="Pinecone" height="40" />
+  <img src="https://img.shields.io/badge/FAISS-0078D4?style=flat-square&logo=facebook&logoColor=white" alt="FAISS" height="40" />
+  <img src="https://img.shields.io/badge/VectorDB-4B0082?style=flat-square&logo=database&logoColor=white" alt="VectorDB" height="40" />
+  <img src="https://img.shields.io/badge/ChromaDB-DB4C3A?style=flat-square&logo=database&logoColor=white" alt="ChromaDB" height="40" />
 </p>
 
 ---
@@ -55,12 +60,12 @@
 ## 🚀 Featured Projects
 
 - **[RFP IntelliCheck](https://github.com/zuberkhan01st/rfp-intellicheck)**  
-  A full-stack application for automated RFP analysis using React, Node.js, and AI-driven insights.  
-  🛠️ Tech: React, Node.js, MongoDB, LangChain
+  A full-stack application for automated RFP analysis using AI-driven insights.  
+  🛠️ Tech: React, Node.js, MongoDB, LangChain, Pinecone
 
 - **[Swacch Vision](https://github.com/zuberkhan01st/swacch-vision)**  
   AI-powered waste classification system, finalist at Smart India Hackathon 2024.  
-  🛠️ Tech: Python, TensorFlow, Flask, AWS
+  🛠️ Tech: Python, TensorFlow, Flask, AWS, FAISS
 
 - **[Portfolio Website](https://zuberkhan01st.vercel.app)**  
   A sleek, responsive portfolio showcasing my projects and skills.  
