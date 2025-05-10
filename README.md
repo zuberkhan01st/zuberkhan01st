@@ -77,7 +77,7 @@
 </p>
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zuberkhan01st&theme=dracula" alt="Profile Details" width="500" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zuberkhan01st&theme=dracula" alt="Profile Details" width="500" />
 </p>
 
 <p align="center">
