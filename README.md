@@ -115,19 +115,6 @@
 
 ---
 
-## 🎨 Profile Customization Tools
-
-- [SkillIcons](https://skillicons.dev) — Clean, consistent tech icons
-- [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats) — Dynamic stats cards
-- [GitHub Profile Trophy](https://github.com/ryo-ma/github-profile-trophy) — Showcase achievements
-- [GitHub Profile Summary Cards](https://github.com/vn7n24fzkq/github-profile-summary-cards) — Detailed profile insights
-- [GitHub Contribution Snake](https://github.com/Platane/snk) — Animated contribution graph
-- [Readme Typing SVG](https://github.com/DenverCoder1/readme-typing-svg) — Dynamic text animations
-- [Shields.io](https://shields.io) — Custom badges for tools
-- [Markdown Emoji Cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet) — Fun emojis for your README
-
----
-
 <div align="center">
   <img src="https://cultofthepartyparrot.com/parrots/hd/githubparrot.gif" width="30" height="30"/>
   <img src="https://cultofthepartyparrot.com/parrots/hd/opensourceparrot.gif" width="30" height="30"/>
