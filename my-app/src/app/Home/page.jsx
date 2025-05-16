@@ -81,7 +81,7 @@ export default function Home() {
       "title": "AgriAI - Smart Farming Assistant",
       "description": "Developed an AI-powered system to assist farmers by providing crop recommendations, disease detection, and market price insights.",
       "technologies": ["Node.js", "Next.js", "Flask", "TensorFlow", "Computer Vision", "IoT"],
-      "link": "https://github.com/zuberkhan01st/InnovateYou_2025",
+      "link": "https://github.com/zuberkhan01st/AgriAI-SmartFarming",
       image:"/farmer.jpg"
     },
     {
@@ -134,7 +134,7 @@ export default function Home() {
       degree: "BE in Artificial Intelligence & Data Science",
       institution: "Dr. D. Y. Institute Of Technology, Pimpri",
       location: "Pune",
-      year: "2026",
+      year: "2028",
       score: "SGPA 9.11"
     }
   ];
@@ -308,11 +308,15 @@ export default function Home() {
                 className="md:w-1/2 relative"
               >
                 <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">
-                    ZK
-                  </div>
+                  <Image
+                    src="https://avatars.githubusercontent.com/u/132389756?v=4"
+                    alt="Zuber Khan"
+                    width={320}
+                    height={320}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
                 </div>
-
               </motion.div>
             </div>
           </div>
