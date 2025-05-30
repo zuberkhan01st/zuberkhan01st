@@ -9,6 +9,45 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Dark mode defaults to prevent flashing */
+html {
+  --cursor-color: #8b5cf6; /* Default cursor color in dark mode */
+}
+
+html.dark {
+  color-scheme: dark;
+  --cursor-color: #8b5cf6;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+  --cursor-color: #6d28d9;
+}
+
+/* Only hide cursor on desktop */
+@media (min-width: 769px) {
+  html {
+    cursor: none !important; /* Hide default cursor */
+  }
+  
+  a, button, input[type="button"], select, [role="button"], 
+  .card, .interactive, .project-card, .project-item, .nav-item {
+    cursor: none !important;
+  }
+}
+
+/* Show default cursor on mobile */
+@media (max-width: 768px) {
+  html {
+    cursor: auto !important;
+  }
+  
+  a, button, input[type="button"], select, [role="button"], 
+  .card, .interactive, .project-card, .project-item, .nav-item {
+    cursor: pointer !important;
+  }
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -121,9 +160,113 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border: var(--border);
+    outline-color: var(--ring, 50%);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Interactive element styles */
+  .interactive, .project-card, .nav-item {
+    transition-property: all;
+    transition-duration: 300ms;
+  }
+
+  /* Custom cursor styles */
+  html {
+    cursor: none !important; /* Hide default cursor */
+  }
+
+  /* Non-links use custom cursor */
+  button:not([href]), input[type="button"], select, 
+  [role="button"]:not([href]), .card:not(a):not([href]), 
+  .interactive:not(a):not([href]), .project-card:not(a):not([href]), 
+  .project-item:not(a):not([href]), .nav-item:not(a):not([href]) {
+    cursor: none !important;
+  }
+  
+  /* Links use default pointer cursor */
+  a, [href], .redirect, .link {
+    cursor: pointer !important;
+  }
+}
+
+/* Allow default cursor on links */
+a, [href], .redirect, .link {
+  cursor: pointer !important;
+}
+
+/* Hide default cursor for non-link interactive elements */
+button:not([href]), input[type="button"], select, 
+[role="button"]:not([href]), .card:not(a), .interactive:not(a), 
+.project-card:not(a), .project-item:not(a):not([href]), .nav-item:not(a):not([href]) {
+  cursor: none !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+  
+  /* Fix social links position on mobile */
+  .fixed.right-6 {
+    right: 0.75rem !important;
+  }
+  
+  /* Adjust project cards for mobile */
+  .project-card {
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+  }
+  
+  /* Fix navigation for mobile */
+  .nav-container {
+    padding: 0.5rem !important;
+  }
+  
+  /* Make responsive spacing */
+  .py-20 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .mt-20 {
+    margin-top: 2rem !important;
+  }
+  
+  .mb-20 {
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Adjust skillset cards */
+  .grid-cols-4 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  
+  .project-card {
+    width: calc(50% - 1rem) !important;
   }
 }

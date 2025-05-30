@@ -8,6 +8,7 @@ import "swiper/css/effect-cards";
 import { Pagination, Navigation, EffectCards, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import CustomCursor from "../../components/CustomCursor";
 
 // Icons
 import {
@@ -27,6 +28,38 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Effect to check for saved theme on load
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+      document.body.style.backgroundColor = '#ffffff';
+    } else {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+      document.body.style.backgroundColor = '#121212';
+    }
+  }, []);
+
+  // Function to properly toggle dark mode
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    
+    // Save preference to localStorage
+    localStorage.setItem('theme', newMode ? 'dark' : 'light');
+    
+    // Apply changes immediately to HTML element
+    if (newMode) {
+      document.documentElement.classList.add('dark');
+      document.body.style.backgroundColor = '#121212';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.style.backgroundColor = '#ffffff';
+    }
+  };
 
   // Track scroll position for animations and active section
   useEffect(() => {
@@ -55,10 +88,14 @@ export default function Home() {
 
   // Skills data
   const skills = [
-    { category: "Development", items: ["Node.js", "Express.js", "Flask", "FastAPI", "RESTful APIs", "WebSocket", "Mobile and Web Development"] },
+    { category: "Development", items: ["Node.js", "Express.js", "Flask", "FastAPI","Next.js", "RESTful APIs", "WebSocket", "Mobile and Web Development"] },
     { category: "Languages", items: ["Python", "C++", "JavaScript", "TypeScript"] },
     { category: "Database & Tools", items: ["MongoDB", "SQL", "Git", "Cisco Packet Tracer", "Postman", "VS Code", "PyCharm", "Docker", "Netlify", "Render", "Vercel"] },
-    { category: "Core Concepts", items: ["Data Structures and Algorithms", "Machine Learning", "Object-Oriented Programming", "Backend Development", "Data Science", "DBMS", "API Development", "Web Scraping", "Version Control"] }
+    { category: "Core Concepts", items: ["Data Structures and Algorithms", "Machine Learning", "Object-Oriented Programming", "Backend Development", "Data Science", "DBMS", "API Development", "Web Scraping", "Version Control"] },
+    //{ category: "AI & ML", items: ["Machine Learning", "Natural Language Processing", "Computer Vision", "AI Chatbots", "RAG (Retrieval-Augmented Generation)", "TensorFlow", "YOLO"] },
+    { category: "GenAI", items: [ "LLM (Large Language Models)", "RAG (Retrieval-Augmented Generation)", "Langchain", "Gemini", "FAISS", "Pinecone"] },
+    //{ category: "Soft Skills", items: ["Problem Solving", "Team Collaboration", "Communication", "Critical Thinking", "Time Management"] },
+    //{ category: "Soft Skills", items: ["Problem Solving", "Team Collaboration", "Communication", "Critical Thinking", "Time Management"] }
   ];
 
   // Experience data
@@ -74,9 +111,22 @@ export default function Home() {
       ]
     }
   ];
-
   // Projects data
   const projects = [
+    {
+      "title": "RepoRadar - GitHub Repository Analyzer",
+      "description": "Built an advanced GitHub repository analyzer extracting key metrics and code structure, improving project evaluation efficiency by 85% with an AI chatbot for automating workflows.",
+      "technologies": ["Next.js", "LLM", "Node.js", "GitHub API"],
+      "link": "https://reporadar.zuberkhan.tech",
+      "image":"https://github.com/zuberkhan01st/RepoRadar/raw/main/Public/1.png"
+    },
+    {
+      "title": "RFP IntelliCheck - AI-Powered Compliance Tool",
+      "description": "Built an end-to-end RFP analysis platform using RAG (Gemini + FAISS) to automate eligibility checks with 90% accuracy and cutting manual review time by 65% for Fortune 500 clients.",
+      "technologies": ["React.js", "Flask", "Retrieval-Augmented Generation", "Gemini", "FAISS"],
+      "link": "https://github.com/zuberkhan01st/RFP_IntelliCheck",
+      image:"/file.svg"
+    },
     {
       "title": "AgriAI - Smart Farming Assistant",
       "description": "Developed an AI-powered system to assist farmers by providing crop recommendations, disease detection, and market price insights.",
@@ -84,6 +134,7 @@ export default function Home() {
       "link": "https://github.com/zuberkhan01st/AgriAI-SmartFarming",
       image:"/farmer.jpg"
     },
+    
     {
       "title": "Airborne Threat Detection System",
       "description": "The Airborne Threat Detection System is an advanced AI-powered solution designed to detect and classify airborne threats such as drones, missiles, and birds in real-time. Built with cutting-edge technologies, this system ensures high accuracy, rapid response, and seamless integration with existing surveillance infrastructure.",
@@ -97,7 +148,6 @@ export default function Home() {
       technologies: ["Python", "Machine Learning", "Web Scraping", "Sentiment Analysis"],
       link: "https://github.com/zuberkhan01st/Crude_Oil_Stocks_Price_Prediction_System",
       image: "/crude.png"
-
     },
     {
       title: "Swacch Vision",
@@ -156,45 +206,47 @@ export default function Home() {
       description: "Recognized for outstanding performance and critical thinking on AI and technology topics.",
       image: "/images/debate.jpg" // Add image path
     }
-  ];
-
-  return (
-    <div className={darkMode ? "dark" : ""}>
-      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white font-sans min-h-screen transition-colors duration-300 relative">
+  ];  return (
+    <div>
+      <CustomCursor />
+      <div className="bg-gradient-to-br from-blue-50 via-slate-50 to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-black text-gray-800 dark:text-white font-sans min-h-screen transition-colors duration-300 relative">
         {/* Floating Progress Bar */}
         <div className="fixed top-0 left-0 w-full h-1 z-50">
           <div
             className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
             style={{ width: `${scrollProgress}%` }}
           ></div>
-        </div>
-
-        {/* Theme Toggle and Social Links */}
-        <div className="fixed right-6 top-24 z-40 flex flex-col gap-6">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-3 rounded-full bg-gray-100/10 backdrop-blur-lg text-white shadow-lg hover:scale-110 transition-transform"
+        </div>        {/* Theme Toggle and Social Links */}
+        <div className="fixed right-6 top-24 z-40 flex flex-col gap-6">          <button
+            onClick={toggleDarkMode}
+            className="p-3 rounded-full bg-white/20 dark:bg-gray-800/20 backdrop-blur-lg text-gray-800 dark:text-white shadow-lg hover:scale-110 transition-transform"
+            aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-          <div className="flex flex-col gap-4">
-            <a href="https://github.com/zuberkhan01st" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-gray-100/10 backdrop-blur-lg text-white shadow-lg hover:scale-110 transition-transform">
+          </button><div className="flex flex-col gap-4">
+            <a href="https://github.com/zuberkhan01st" target="_blank" rel="noopener noreferrer" 
+               className="p-3 rounded-full bg-gray-800/10 dark:bg-gray-100/10 backdrop-blur-lg text-gray-800 dark:text-white shadow-lg hover:scale-110 transition-transform"
+               data-tooltip="GitHub Profile">
               <Github size={18} />
             </a>
-            <a href="https://linkedin.com/in/zuber-khan-01st" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-gray-100/10 backdrop-blur-lg text-white shadow-lg hover:scale-110 transition-transform">
+            <a href="https://linkedin.com/in/zuber-khan-01st" target="_blank" rel="noopener noreferrer" 
+               className="p-3 rounded-full bg-gray-800/10 dark:bg-gray-100/10 backdrop-blur-lg text-gray-800 dark:text-white shadow-lg hover:scale-110 transition-transform"
+               data-tooltip="LinkedIn Profile">
               <Linkedin size={18} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-gray-100/10 backdrop-blur-lg text-white shadow-lg hover:scale-110 transition-transform">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+               className="p-3 rounded-full bg-gray-800/10 dark:bg-gray-100/10 backdrop-blur-lg text-gray-800 dark:text-white shadow-lg hover:scale-110 transition-transform"
+               data-tooltip="Twitter Profile">
               <Twitter size={18} />
             </a>
-            <a href="mailto:zuberkhan01st@gmail.com" className="p-3 rounded-full bg-gray-100/10 backdrop-blur-lg text-white shadow-lg hover:scale-110 transition-transform">
+            <a href="mailto:zuberkhan01st@gmail.com" 
+               className="p-3 rounded-full bg-gray-800/10 dark:bg-gray-100/10 backdrop-blur-lg text-gray-800 dark:text-white shadow-lg hover:scale-110 transition-transform"
+               data-tooltip="Email Me">
               <Mail size={18} />
             </a>
           </div>
-        </div>
-
-        {/* Navigation Bar */}
-        <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900/80 backdrop-blur-lg py-4 shadow-md">
+        </div>        {/* Navigation Bar */}
+        <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-gray-900/80 backdrop-blur-lg py-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center px-4">
             <motion.h1
               initial={{ opacity: 0, x: -20 }}
@@ -206,15 +258,15 @@ export default function Home() {
             </motion.h1>
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex space-x-6">
-              {["hero", "about", "skills", "experience", "projects", "achievements", "contact"].map((item) => (
+            <ul className="hidden md:flex space-x-6">                {["hero", "about", "skills", "experience", "projects", "achievements", "contact"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item}`}
                     className={`relative transition duration-300 ${activeSection === item
                         ? "text-purple-500"
                         : "text-gray-300 hover:text-purple-400"
-                      }`}
+                      } nav-item`}
+                    data-tooltip={`${item.charAt(0).toUpperCase() + item.slice(1)} section`}
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                     {activeSection === item && (
@@ -514,10 +566,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Projects Section */}
-<section id="projects" className="py-20">
+        </section>        {/* Projects Section */}
+<section id="projects" className="py-20 bg-white/50 dark:bg-transparent">
   <div className="container mx-auto px-4">
     {/* Section Header */}
     <motion.div
@@ -531,21 +581,21 @@ export default function Home() {
         Featured Projects
       </h2>
       <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8"></div>
-      <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
         Here are some of my notable projects that showcase my technical expertise and problem-solving abilities.
       </p>
     </motion.div>
 
     {/* Projects Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project, index) => (
-        <motion.div
+      {projects.map((project, index) => (        <motion.div
           key={project.title}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow"
+          className="bg-white/80 dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 hover:bg-blue-50/30 dark:hover:bg-gray-700/80 project-card"
+          data-tooltip={`${project.title}`}
         >
           {/* Project Image */}
           <div className="h-48 relative overflow-hidden">
@@ -561,20 +611,20 @@ export default function Home() {
             <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{project.title}</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-6">
-              {project.technologies.map((tech) => (
-                <span
+              {project.technologies.map((tech) => (                <span
                   key={tech}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full"
+                  className="px-3 py-1 bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-gray-300 text-sm rounded-full border border-blue-100 dark:border-gray-600 interactive"
+                  data-tooltip={tech}
                 >
                   {tech}
                 </span>
               ))}
-            </div>
-            <a
+            </div>            <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300"
+              className="inline-flex items-center font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 interactive"
+              data-tooltip={`Visit ${project.title}`}
             >
               View Project <ExternalLink size={16} className="ml-1" />
             </a>
