@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import  {siteMetadata} from "./utils/siteMetadata.mjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,6 +46,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth dark">
       <head>
+        <meta name="description" content={siteMetadata.description} />
+        {siteMetadata.googleSiteVerification && (
+          <meta
+            name="google-site-verification"
+            content={siteMetadata.googleSiteVerification}
+          />
+        )}
         <DarkModeScript />
       </head>
       <body
