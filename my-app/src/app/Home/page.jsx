@@ -109,6 +109,17 @@ export default function Home() {
         "Built a news sentiment analysis application utilizing AI and natural language processing, providing real-time sentiment classification of trending news with 92% accuracy.",
         "Implemented CI/CD pipelines using Git for version control, automating deployment processes and reducing integration issues by 70%."
       ]
+    },
+
+    {
+      title: "SDE Intern",
+      company: "Application Ally",
+      period: "June 2025 - Present",
+      description: [
+        "Enhanced the GenAI-driven career guidance platform (Mirai) by integrating psychometric and activity-based evaluations to map students to appropriate domains",
+        "Engineered scalable back-end services using Node.js, Express.js, and MongoDB with integrated JWT authentication and Redis caching, aligning with cloud deployment practices",
+        "Integrated Generative AI models to deliver personalized recommendations, improving guidance accuracy by 25% and contributing to a streamlined user interface experience."
+      ]
     }
   ];
   // Projects data
@@ -156,6 +167,7 @@ export default function Home() {
       link: "https://github.com/zuberkhan01st/SIH_2024-Complete_Code-",
       image: "/Screenshot 2025-03-02 160238.png"
     }
+    
 
   ];
 
@@ -184,7 +196,7 @@ export default function Home() {
       degree: "BE in Artificial Intelligence & Data Science",
       institution: "Dr. D. Y. Institute Of Technology, Pimpri",
       location: "Pune",
-      year: "2028",
+      year: "2026",
       score: "SGPA 9.11"
     }
   ];
