@@ -76,7 +76,41 @@ a, button, input, select, textarea {
 }
 
 /* Default cursor everywhere - custom cursor disabled */
-/* Custom cursor CSS removed - using default browser cursor */
+/* Ensure default cursor is always visible and not hidden by background */
+html, body {
+  cursor: auto !important;
+}
+
+/* Ensure cursor is visible on all elements */
+* {
+  cursor: inherit !important;
+}
+
+/* Text inputs use text cursor */
+input[type="text"], 
+input[type="email"], 
+input[type="password"],
+input[type="search"],
+input[type="url"],
+textarea {
+  cursor: text !important;
+}
+
+/* Links and buttons use pointer cursor */
+a, button, [role="button"], [href] {
+  cursor: pointer !important;
+}
+
+/* Show default cursor on mobile */
+@media (max-width: 768px) {
+  html {
+    cursor: auto !important;
+  }
+  
+  body {
+    cursor: auto !important;
+  }
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

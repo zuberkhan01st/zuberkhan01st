@@ -15,7 +15,7 @@ export default function CustomCursor() {
       document.body.style.cursor = '';
       document.body.classList.remove('custom-cursor-active');
       
-      // Remove any inline cursor styles that might be set
+      // Remove any inline cursor styles
       document.documentElement.style.removeProperty('cursor');
       document.body.style.removeProperty('cursor');
     }
@@ -42,18 +42,6 @@ export default function CustomCursor() {
     
     // Initialize position
     setPosition({ x: targetX, y: targetY });
-    
-    // Show cursor immediately
-    if (cursorRef.current) {
-      cursorRef.current.style.opacity = '1';
-      cursorRef.current.style.display = 'block';
-      cursorRef.current.style.visibility = 'visible';
-    }
-    if (followerRef.current) {
-      followerRef.current.style.opacity = '1';
-      followerRef.current.style.display = 'block';
-      followerRef.current.style.visibility = 'visible';
-    }
     
     const handleMouseMove = (e) => {
       targetX = e.clientX;
@@ -102,6 +90,7 @@ export default function CustomCursor() {
           cursorRef.current.style.opacity = '1';
           cursorRef.current.style.display = 'block';
           cursorRef.current.style.visibility = 'visible';
+          cursorRef.current.style.zIndex = '2147483647';
         }
         if (followerRef.current) {
           followerRef.current.style.left = `${currentX}px`;
@@ -109,6 +98,7 @@ export default function CustomCursor() {
           followerRef.current.style.opacity = '1';
           followerRef.current.style.display = 'block';
           followerRef.current.style.visibility = 'visible';
+          followerRef.current.style.zIndex = '2147483647';
         }
         animate();
       } else {
@@ -119,7 +109,7 @@ export default function CustomCursor() {
     
     // Use requestAnimationFrame to ensure DOM is ready
     requestAnimationFrame(() => {
-      setTimeout(startAnimation, 50);
+      setTimeout(startAnimation, 100);
     });
     
     const handleHover = (e) => {
@@ -168,11 +158,24 @@ export default function CustomCursor() {
   if (isMobile) return null;
 
   return (
-    <>
-      {/* Outer ring - Bright white/cyan for visibility */}
+    <div 
+      className="custom-cursor-wrapper"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        pointerEvents: 'none',
+        zIndex: 2147483647,
+        isolation: 'isolate',
+        willChange: 'transform',
+      }}
+    >
+      {/* Outer ring - Purple/violet gradient */}
       <div
         ref={followerRef}
-        className="pointer-events-none"
+        className="pointer-events-none custom-cursor-element"
         style={{
           width: '48px',
           height: '48px',
@@ -182,21 +185,23 @@ export default function CustomCursor() {
           transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
           transition: 'transform 0.15s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.3s ease-out',
           border: '2px solid',
-          borderColor: isHovering ? 'rgba(147, 197, 253, 1)' : 'rgba(191, 219, 254, 0.9)',
+          borderColor: isHovering ? 'rgba(167, 139, 250, 1)' : 'rgba(139, 92, 246, 0.8)',
           borderRadius: '50%',
           boxShadow: isHovering 
-            ? '0 0 25px rgba(147, 197, 253, 0.8), 0 0 50px rgba(147, 197, 253, 0.5)'
-            : '0 0 15px rgba(191, 219, 254, 0.6)',
+            ? '0 0 30px rgba(167, 139, 250, 0.9), 0 0 60px rgba(139, 92, 246, 0.6), 0 0 90px rgba(236, 72, 153, 0.3)'
+            : '0 0 20px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.4)',
           zIndex: 2147483647,
           pointerEvents: 'none',
-          opacity: 1, // Always visible on desktop
+          opacity: 0,
           visibility: 'visible',
+          mixBlendMode: 'normal',
+          willChange: 'transform, opacity',
         }}
       />
-      {/* Inner dot - Bright cyan/white */}
+      {/* Inner dot - Purple/violet gradient */}
       <div 
         ref={cursorRef}
-        className="pointer-events-none"
+        className="pointer-events-none custom-cursor-element"
         style={{
           width: '12px',
           height: '12px',
@@ -206,17 +211,21 @@ export default function CustomCursor() {
           borderRadius: '50%',
           transform: `translate(-50%, -50%) scale(${isHovering ? 2 : 1})`,
           transition: 'transform 0.1s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.3s ease-out',
-          backgroundColor: isHovering ? '#93c5fd' : '#bfdbfe',
+          background: isHovering 
+            ? 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)'
+            : 'linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)',
           boxShadow: isHovering 
-            ? '0 0 20px rgba(147, 197, 253, 1), 0 0 40px rgba(147, 197, 253, 0.6)'
-            : '0 0 12px rgba(191, 219, 254, 0.9)',
+            ? '0 0 25px rgba(167, 139, 250, 1), 0 0 50px rgba(139, 92, 246, 0.8), 0 0 75px rgba(236, 72, 153, 0.5)'
+            : '0 0 15px rgba(139, 92, 246, 0.9), 0 0 30px rgba(139, 92, 246, 0.6)',
           zIndex: 2147483647,
           pointerEvents: 'none',
-          opacity: 1, // Always visible on desktop
+          opacity: 0,
           visibility: 'visible',
+          mixBlendMode: 'normal',
+          willChange: 'transform, opacity',
         }}
       />
-      {/* Glow effect - Bright */}
+      {/* Glow effect - Purple/violet gradient */}
       <div
         className="pointer-events-none"
         style={{
@@ -226,12 +235,15 @@ export default function CustomCursor() {
           left: `${position.x}px`,
           top: `${position.y}px`,
           transform: 'translate(-50%, -50%)',
-          background: `radial-gradient(circle, rgba(147, 197, 253, ${isHovering ? 0.2 : 0.1}) 0%, transparent 70%)`,
+          background: isHovering
+            ? `radial-gradient(circle, rgba(167, 139, 250, ${0.25}) 0%, rgba(236, 72, 153, ${0.15}) 40%, transparent 70%)`
+            : `radial-gradient(circle, rgba(139, 92, 246, ${0.2}) 0%, rgba(167, 139, 250, ${0.1}) 40%, transparent 70%)`,
           transition: 'opacity 0.2s ease-out',
-          zIndex: 999998, // Just below cursor
+          zIndex: 2147483646, // Just below cursor
           pointerEvents: 'none',
+          mixBlendMode: 'normal',
         }}
       />
-    </>
+    </div>
   );
 }

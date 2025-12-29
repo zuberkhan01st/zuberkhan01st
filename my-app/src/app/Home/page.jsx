@@ -13,6 +13,7 @@ import CodeTypingEffect from "../../components/CodeTypingEffect";
 import InteractiveTerminal from "../../components/InteractiveTerminal";
 import Floating3D from "../../components/Floating3D";
 import AnimatedCarousel from "../../components/AnimatedCarousel";
+import GlimpseSection from "../../components/GlimpseSection";
 
 // Icons
 import {
@@ -335,7 +336,7 @@ export default function Home() {
 
   return (
     <>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <div className="relative">
       <AnimatedBackground />
       
@@ -916,83 +917,7 @@ export default function Home() {
                 </div>
       </section>
 
-      {/* Glimpse Section - Personal Moments & Events */}
-      <section id="glimpse" className="py-32 relative overflow-hidden">
-        {/* Subtle Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
-          <motion.div
-            className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
-            animate={{
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-              </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-5xl md:text-6xl font-bold mb-4"
-            >
-              <span className="bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
-                A Glimpse
-              </span>
-            </motion.h2>
-            
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-1 w-24 bg-gradient-to-r from-violet-500 to-fuchsia-500 mx-auto rounded-full origin-center"
-            ></motion.div>
-            
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-xl text-gray-400 mt-6 max-w-2xl mx-auto"
-            >
-              Moments from events, achievements, and professional journey
-            </motion.p>
-          </motion.div>
-
-          {/* Professional Carousel Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-6xl mx-auto"
-          >
-            <div className="relative w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 backdrop-blur-sm">
-              <AnimatedCarousel 
-                images={[
-                  '/4.jpg',
-                  '/farmer.jpg',
-                  '/crude.png',
-                  '/Screenshot 2025-03-02 160238.png',
-                  '/Screenshot 2025-01-19 102508.png'
-                ]}
-                autoplayInterval={5000}
-              />
-            </div>
-            </motion.div>
-          </div>
-        </section>
+      
 
       {/* Skills Section - Unique Layout with 3D Elements */}
       <section id="skills" className="py-32 relative overflow-hidden">
@@ -1454,6 +1379,9 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+      {/* Glimpse Section - Personal Moments & Events */}
+      <GlimpseSection />
 
       {/* Achievements Section */}
       <section id="achievements" className="py-32 relative overflow-hidden">
