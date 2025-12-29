@@ -114,8 +114,11 @@
 <p align="center">
   <a href="https://www.linkedin.com/in/zuber-khan-01st/"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" height="40" /></a>
   <a href="https://twitter.com/zuberkhan01st"><img src="https://skillicons.dev/icons?i=twitter" alt="Twitter" height="40" /></a>
-  <a href="https://zuberkhan01st.vercel.app"><img src="https://skillicons.dev/icons?i=vercel" alt="Portfolio" height="40" /></a>
+  <a href = 'https://zuberkhan.tech/'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/portfolio.png"/></a>
   <a href="https://github.com/zuberkhan01st"><img src="https://skillicons.dev/icons?i=github" alt="GitHub" height="40" /></a>
+  
+
+
 </p>
 
 ---
@@ -139,4 +142,4 @@
   <img src="https://cultofthepartyparrot.com/parrots/hd/60fpsparrot.gif" width="30" height="30"/>
 </div>
 
-Happy Coding! 💻✨
+Happy Thinking & implementing! 💻✨
