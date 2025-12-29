@@ -22,6 +22,46 @@ html {
   backface-visibility: hidden;
 }
 
+/* GPU acceleration for smooth animations */
+section {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Optimize motion components */
+[data-framer-component],
+[motion] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Smooth animation performance */
+.motion-safe\:animate-smooth {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/* Better easing for smoother animations */
+@keyframes smooth-float {
+  0%, 100% {
+    transform: translateY(0px) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(0);
+  }
+}
+
+/* Optimize hover transitions */
+.group:hover,
+.group-hover\:scale-110:hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
 body {
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
@@ -31,16 +71,12 @@ body {
 /* Smooth transitions for all interactive elements */
 a, button, input, select, textarea {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* Better pointer cursor */
-a, button, [role="button"], input[type="button"], input[type="submit"] {
-  cursor: pointer;
-}
-
-input, textarea, select {
-  cursor: text;
-}
+/* Default cursor everywhere - custom cursor disabled */
+/* Custom cursor CSS removed - using default browser cursor */
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -338,41 +374,8 @@ body {
   background-color: #000000;
 }
 
-/* Custom cursor only on desktop, keep default for inputs and links */
-@media (min-width: 769px) {
-  html {
-    cursor: none !important;
-  }
-  
-  body {
-    cursor: none !important;
-  }
-  
-  /* Keep default cursor for interactive elements */
-  a, button, input, textarea, select, [role="button"] {
-    cursor: pointer !important;
-  }
-  
-  input[type="text"], input[type="email"], textarea {
-    cursor: text !important;
-  }
-  
-  /* Ensure cursor is always on top */
-  [data-cursor] {
-    z-index: 99999 !important;
-  }
-}
-
-/* Show default cursor on mobile */
-@media (max-width: 768px) {
-  html {
-    cursor: auto !important;
-  }
-  
-  body {
-    cursor: auto !important;
-  }
-}
+/* Default cursor everywhere - custom cursor disabled */
+/* All cursor hiding rules removed - using default browser cursor */
 
 :root {
   --background: oklch(1 0 0);
@@ -500,36 +503,11 @@ body {
     transition-duration: 300ms;
   }
 
-  /* Custom cursor styles */
-  html {
-    cursor: none !important; /* Hide default cursor */
-  }
-
-  /* Non-links use custom cursor */
-  button:not([href]), input[type="button"], select, 
-  [role="button"]:not([href]), .card:not(a):not([href]), 
-  .interactive:not(a):not([href]), .project-card:not(a):not([href]), 
-  .project-item:not(a):not([href]), .nav-item:not(a):not([href]) {
-    cursor: none !important;
-  }
-  
-  /* Links use default pointer cursor */
-  a, [href], .redirect, .link {
-    cursor: pointer !important;
-  }
+  /* Default cursor styles - custom cursor disabled */
+  /* All elements use default browser cursor */
 }
 
-/* Allow default cursor on links */
-a, [href], .redirect, .link {
-  cursor: pointer !important;
-}
-
-/* Hide default cursor for non-link interactive elements */
-button:not([href]), input[type="button"], select, 
-[role="button"]:not([href]), .card:not(a), .interactive:not(a), 
-.project-card:not(a), .project-item:not(a):not([href]), .nav-item:not(a):not([href]) {
-  cursor: none !important;
-}
+/* Default cursor everywhere - all cursor hiding rules removed */
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
