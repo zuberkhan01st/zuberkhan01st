@@ -91,22 +91,13 @@
 
 ## 📊 GitHub Stats
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=zuberkhan01st&show_icons=true&theme=dracula&hide_border=true" alt="GitHub Stats" width="400" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=zuberkhan01st&layout=compact&theme=dracula&hide_border=true" alt="Top Languages" width="300" />
-</p>
+<a href="https://github.com/AyushKatre05">
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=AyushKatre05&theme=aura" height="180em" />
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=AyushKatre05&theme=aura" height="180em" />
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=AyushKatre05&theme=aura" height="180em" />
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=AyushKatre05&theme=aura" height="180em" />
+<img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=AyushKatre05&theme=aura" height="180em" />
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=zuberkhan01st&theme=dracula&no-frame=true&margin-w=10&column=6" alt="GitHub Trophies" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=zuberkhan01st&theme=dracula" alt="Profile Details" width="500" />
-</p>
-
-<p align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=zuberkhan01st" alt="Visitor Badge" />
-</p>
 
 ---
 
