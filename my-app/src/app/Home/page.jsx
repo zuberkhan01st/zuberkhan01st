@@ -174,10 +174,11 @@ export default function Home() {
 
   // Skills data
   const skills = [
-    { category: "Development", items: ["Node.js", "Express.js", "Flask", "FastAPI","Next.js", "RESTful APIs", "WebSocket", "Mobile and Web Development"], icon: Code },
+    { category: "Development", items: ["Node.js", "Express.js", "Flask", "FastAPI", "Next.js", "React", "RESTful APIs", "GraphQL", "WebSocket", "Mobile and Web Development"], icon: Code },
     { category: "Languages", items: ["Python", "C++", "JavaScript", "TypeScript", "Java"], icon: Brain },
-    { category: "Database & Tools", items: ["MongoDB", "SQL", "Git", "Cisco Packet Tracer", "Postman", "VS Code", "PyCharm", "Docker", "Netlify", "Render", "Vercel"], icon: Sparkles },
-    { category: "Core Concepts", items: ["Data Structures and Algorithms", "Machine Learning", "Object-Oriented Programming", "Backend Development", "Data Science", "DBMS", "API Development", "Web Scraping", "Version Control"], icon: Rocket },
+    { category: "Database & Tools", items: ["MongoDB", "PostgreSQL", "Redis", "SQL", "Git", "GitHub Actions", "Cisco Packet Tracer", "Postman", "VS Code", "PyCharm", "Docker", "Netlify", "Render", "Vercel"], icon: Sparkles },
+    { category: "Cloud & DevOps", items: ["GCP (Google Cloud Platform)", "Cloud Run", "Docker", "CI/CD", "GitHub Actions", "Redis", "Microservices Architecture"], icon: Rocket },
+    { category: "Core Concepts", items: ["Data Structures and Algorithms", "Machine Learning", "Object-Oriented Programming", "Backend Development", "Data Science", "DBMS", "API Development", "Web Scraping", "Version Control", "System Design"], icon: Rocket },
     { category: "GenAI", items: [ "LLM (Large Language Models)", "RAG (Retrieval-Augmented Generation)", "Langchain", "Gemini", "FAISS", "Pinecone"], icon: Sparkles },
   ];
 
