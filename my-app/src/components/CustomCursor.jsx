@@ -1,21 +1,17 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function CustomCursor() {
-  // Define all state variables together at the top
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
-  const [hideCustomCursor, setHideCustomCursor] = useState(false); // New state to hide custom cursor on links
+  const cursorRef = useRef(null);
+  const followerRef = useRef(null);
   
-  // First useEffect for mobile detection
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      
-      // Show default cursor on mobile devices
       if (mobile) {
         document.documentElement.style.cursor = 'auto';
       } else {
@@ -28,103 +24,117 @@ export default function CustomCursor() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
-  // Second useEffect for mouse movement and hover effects
   useEffect(() => {
-    // Skip effect if on mobile
     if (isMobile) return;
     
+    let animationFrameId;
+    let currentX = window.innerWidth / 2;
+    let currentY = window.innerHeight / 2;
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    
+    // Initialize position
+    setPosition({ x: targetX, y: targetY });
+    
     const handleMouseMove = (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
       setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
     };
 
-    const handleLinkEnter = () => {
-      // Hide custom cursor and show default browser cursor on links
-      setHideCustomCursor(true);
+    const animate = () => {
+      // Smooth interpolation for cursor
+      currentX += (targetX - currentX) * 0.15;
+      currentY += (targetY - currentY) * 0.15;
+      
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${currentX}px`;
+        cursorRef.current.style.top = `${currentY}px`;
+      }
+      
+      // Faster interpolation for follower
+      if (followerRef.current) {
+        const followerX = currentX + (targetX - currentX) * 0.3;
+        const followerY = currentY + (targetY - currentY) * 0.3;
+        followerRef.current.style.left = `${followerX}px`;
+        followerRef.current.style.top = `${followerY}px`;
+      }
+      
+      animationFrameId = requestAnimationFrame(animate);
     };
     
-    const handleButtonEnter = () => {
-      setIsHovering(true);
-      setHideCustomCursor(false);
+    animate();
+    
+    const handleHover = (e) => {
+      const target = e.target;
+      const isInteractive = target.tagName === 'A' || 
+                           target.tagName === 'BUTTON' || 
+                           target.closest('button') ||
+                           target.closest('a') ||
+                           target.style.cursor === 'pointer';
+      setIsHovering(isInteractive);
     };
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-      setHideCustomCursor(false);
-    };
-
-    // Add event listeners
     window.addEventListener('mousemove', handleMouseMove);
-    
-    // Set up links for default browser cursor
-    const links = document.querySelectorAll('a, [href], .redirect, .link');
-    links.forEach(element => {
-      // Set explicit cursor style for links
-      element.style.cursor = 'pointer';
-      element.addEventListener('mouseenter', handleLinkEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
-    
-    // Other interactive elements - use custom cursor
-    const buttons = document.querySelectorAll('button:not([href]), input[type="button"], select, [role="button"]:not([href]), .card:not(a), .interactive:not(a), .project-card:not(a), [data-tooltip]:not(a), .project-item:not(a), .nav-item:not(a)');
-    buttons.forEach(element => {
-      element.style.cursor = 'none';
-      element.addEventListener('mouseenter', handleButtonEnter);
-      element.addEventListener('mouseleave', handleMouseLeave);
-    });
+    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseover', handleHover);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      links.forEach(element => {
-        element.removeEventListener('mouseenter', handleLinkEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
-      buttons.forEach(element => {
-        element.removeEventListener('mouseenter', handleButtonEnter);
-        element.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseover', handleHover);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, [isMobile, isVisible]);
+  }, [isMobile]);
 
-  // Early return if on mobile, not visible, or hovering over a link
-  if (isMobile || !isVisible || hideCustomCursor) return null;
+  if (isMobile) return null;
 
   return (
     <>
-      {/* Main cursor dot */}
-      <div 
+      {/* Outer ring - Bright white/cyan for visibility */}
+      <div
+        ref={followerRef}
+        className="fixed border-2 rounded-full pointer-events-none"
         style={{
-          position: 'fixed',
-          left: position.x,
-          top: position.y,
-          width: '15px',
-          height: '15px',
-          backgroundColor: 'var(--cursor-color, #8b5cf6)',
-          borderRadius: '50%',
-          transform: 'translate(-50%, -50%)',
-          mixBlendMode: 'difference',
-          pointerEvents: 'none',
-          zIndex: 9999,
-          transition: isHovering ? 'transform 0.2s ease' : 'transform 0.05s ease',
+          width: '48px',
+          height: '48px',
           transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
+          transition: 'transform 0.15s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out',
+          borderColor: isHovering ? 'rgba(147, 197, 253, 1)' : 'rgba(191, 219, 254, 0.9)',
+          boxShadow: isHovering 
+            ? '0 0 25px rgba(147, 197, 253, 0.8), 0 0 50px rgba(147, 197, 253, 0.5)'
+            : '0 0 15px rgba(191, 219, 254, 0.6)',
+          zIndex: 99999,
         }}
       />
-      
-      {/* Cursor circle */}
-      <div
+      {/* Inner dot - Bright cyan/white */}
+      <div 
+        ref={cursorRef}
+        className="fixed rounded-full pointer-events-none"
         style={{
-          position: 'fixed',
-          left: position.x,
-          top: position.y,
-          width: '32px',
-          height: '32px',
-          border: '2px solid var(--cursor-color, #8b5cf6)',
-          borderRadius: '50%',
+          width: '12px',
+          height: '12px',
+          transform: `translate(-50%, -50%) scale(${isHovering ? 2 : 1})`,
+          transition: 'transform 0.1s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out',
+          backgroundColor: isHovering ? '#93c5fd' : '#bfdbfe',
+          boxShadow: isHovering 
+            ? '0 0 20px rgba(147, 197, 253, 1), 0 0 40px rgba(147, 197, 253, 0.6)'
+            : '0 0 12px rgba(191, 219, 254, 0.9)',
+          zIndex: 99999,
+        }}
+      />
+      {/* Glow effect - Bright */}
+      <div
+        className="fixed rounded-full pointer-events-none"
+        style={{
+          width: '80px',
+          height: '80px',
+          left: `${position.x}px`,
+          top: `${position.y}px`,
           transform: 'translate(-50%, -50%)',
-          pointerEvents: 'none',
-          zIndex: 9998,
-          transition: isHovering ? 'transform 0.2s ease' : 'transform 0.1s ease',
-          transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
+          background: `radial-gradient(circle, rgba(147, 197, 253, ${isHovering ? 0.2 : 0.1}) 0%, transparent 70%)`,
+          transition: 'opacity 0.2s ease-out',
+          zIndex: 99998,
         }}
       />
     </>

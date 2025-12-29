@@ -1,15 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import  {siteMetadata} from "./utils/siteMetadata.mjs";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -33,7 +35,7 @@ function DarkModeScript() {
               document.body.style.backgroundColor = '#ffffff';
             } else {
               document.documentElement.classList.add('dark');
-              document.body.style.backgroundColor = '#121212';
+              document.body.style.backgroundColor = '#000000';
             }
           })();
         `,
@@ -56,7 +58,7 @@ export default function RootLayout({ children }) {
         <DarkModeScript />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-white overflow-x-hidden`}
       >
         {children}
       </body>

@@ -5,34 +5,361 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+/* Smooth scrolling - Apple-like */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, select, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better pointer cursor */
+a, button, [role="button"], input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+
+input, textarea, select {
+  cursor: text;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #ec4899);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #db2777);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text gradient animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Glow effect */
+.glow {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.glow:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Achievements Swiper Customization */
+.achievements-swiper {
+  padding: 2rem 0 4rem 0 !important;
+  min-height: 500px;
+  overflow: visible !important;
+}
+
+.achievements-swiper .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.achievements-swiper .swiper-slide {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  opacity: 0.3;
+  transform: scale(0.9);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.achievements-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.achievements-swiper .swiper-slide > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.achievements-swiper .swiper-button-next,
+.achievements-swiper .swiper-button-prev {
+  color: #a78bfa !important;
+  background: rgba(167, 139, 250, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.achievements-swiper .swiper-button-next:after,
+.achievements-swiper .swiper-button-prev:after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.achievements-swiper .swiper-button-next:hover,
+.achievements-swiper .swiper-button-prev:hover {
+  background: rgba(167, 139, 250, 0.25);
+  transform: scale(1.1);
+}
+
+.achievements-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.achievements-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #a78bfa;
+  opacity: 0.3;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin: 0 4px !important;
+}
+
+.achievements-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.3);
+  background: #a78bfa;
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* Skills card hover effects */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(12deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+.skill-card-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 1000px 100%;
+}
+
+/* Smooth transitions for all elements - iPhone-like */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll with momentum */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better performance */
+* {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Better scroll performance */
+section {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Smooth page transitions */
+.page-transition {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth hover effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Terminal scrollbar */
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 4px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 /* Dark mode defaults to prevent flashing */
 html {
   --cursor-color: #8b5cf6; /* Default cursor color in dark mode */
+  background-color: #000000;
 }
 
 html.dark {
   color-scheme: dark;
   --cursor-color: #8b5cf6;
+  background-color: #000000;
 }
 
 html:not(.dark) {
   color-scheme: light;
   --cursor-color: #6d28d9;
+  background-color: #f8fafc;
 }
 
-/* Only hide cursor on desktop */
+body {
+  background-color: #000000;
+}
+
+/* Custom cursor only on desktop, keep default for inputs and links */
 @media (min-width: 769px) {
   html {
-    cursor: none !important; /* Hide default cursor */
+    cursor: none !important;
   }
   
-  a, button, input[type="button"], select, [role="button"], 
-  .card, .interactive, .project-card, .project-item, .nav-item {
+  body {
     cursor: none !important;
+  }
+  
+  /* Keep default cursor for interactive elements */
+  a, button, input, textarea, select, [role="button"] {
+    cursor: pointer !important;
+  }
+  
+  input[type="text"], input[type="email"], textarea {
+    cursor: text !important;
+  }
+  
+  /* Ensure cursor is always on top */
+  [data-cursor] {
+    z-index: 99999 !important;
   }
 }
 
@@ -42,9 +369,8 @@ html:not(.dark) {
     cursor: auto !important;
   }
   
-  a, button, input[type="button"], select, [role="button"], 
-  .card, .interactive, .project-card, .project-item, .nav-item {
-    cursor: pointer !important;
+  body {
+    cursor: auto !important;
   }
 }
 
