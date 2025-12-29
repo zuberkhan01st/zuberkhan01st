@@ -530,7 +530,7 @@ export default function Home() {
 
             {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-8">
-            {["hero", "about", "glimpse", "skills", "experience", "projects", "achievements", "contact"].map((item) => (
+            {["hero", "about", "skills", "experience", "projects","glimpse", "achievements", "contact"].map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item}`}
@@ -571,7 +571,7 @@ export default function Home() {
             className="md:hidden bg-black/40 backdrop-blur-2xl border-t border-white/10 p-4"
             >
             <ul className="flex flex-col gap-4">
-                {["hero", "about", "glimpse", "skills", "experience", "projects", "achievements", "contact"].map((item) => (
+                {["hero", "about", "skills", "experience", "projects", "glimpse", "achievements", "contact"].map((item) => (
                   <li key={item}>
                     <a
                       href={`#${item}`}
@@ -1566,11 +1566,62 @@ export default function Home() {
 
         {/* Footer */}
       <footer className="py-12 border-t border-white/10 bg-black/20 backdrop-blur-xl">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400 mb-2">© {new Date().getFullYear()} Zuber Khan. All rights reserved.</p>
-          <p className="text-gray-500 text-sm">zuberkhan01st@gmail.com | +91 8767174206</p>
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            {/* Copyright and Contact Info */}
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 mb-2">© {new Date().getFullYear()} Zuber Khan. All rights reserved.</p>
+              <p className="text-gray-500 text-sm">zuberkhan01st@gmail.com | +91 8767174206</p>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4">
+              <motion.a
+                href="https://github.com/zuberkhan01st"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/50 transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="GitHub"
+              >
+                <Github size={20} />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/zuber-khan-01st"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/50 transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </motion.a>
+              <motion.a
+                href="https://twitter.com/zuberkhan01st"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/50 transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Twitter"
+              >
+                <Twitter size={20} />
+              </motion.a>
+              <motion.a
+                href="mailto:zuberkhan01st@gmail.com"
+                className="p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/50 transition-all duration-300"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Email"
+              >
+                <Mail size={20} />
+              </motion.a>
+            </div>
           </div>
-        </footer>
+        </div>
+      </footer>
       </div>
     </>
   );
