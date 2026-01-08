@@ -91,7 +91,7 @@
 
 ## 📊 GitHub Stats
 
-<a href="https://github.com/AyushKatre05">
+<a href="https://github.com/zuberkhan01st">
 <img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=zuberkhan01st&theme=aura" height="180em" />
 <img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=zuberkhan01st&theme=aura" height="180em" />
 <img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=zuberkhan01st&theme=aura" height="180em" />
